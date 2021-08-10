@@ -1,12 +1,15 @@
 #!/usr/bin/env node
-'use strict';
-const meow = require('meow');
-const currentPath = require('current-path');
+import meow from 'meow';
+import currentPath from 'current-path';
 
 meow(`
 	Example
 	  $ current-path
 	  /Users/sindresorhus/dev/current-path
-`);
+`, {
+	importMeta: import.meta,
+});
 
-currentPath().then(console.log);
+(async () => {
+	console.log(await currentPath());
+})();
